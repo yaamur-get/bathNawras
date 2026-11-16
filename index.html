@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -7,79 +8,203 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="images/placeholder.css" />
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* صندوقا التقارير والملفات ذات العلاقة */
+    .project-documents {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+      margin: 32px 0 48px;
+      align-items: stretch;
+      font-family: "Cairo", sans-serif;
+    }
+
+    .project-documents-card {
+      background: #ffffff;
+      border: 1px solid #dbe8df;
+      border-radius: 22px;
+      padding: 28px 24px;
+      box-shadow: 0 10px 28px rgba(0, 75, 48, 0.08);
+      min-height: 220px;
+      text-align: right;
+    }
+
+    .project-documents-heading {
+      color: #08704c;
+      font-size: 22px;
+      font-weight: 700;
+      margin: 0 0 12px;
+    }
+
+    .project-documents-description {
+      color: #64748b;
+      font-size: 14px;
+      line-height: 1.9;
+      margin: 0 0 22px;
+    }
+
+    .project-documents-empty {
+      border: 1px dashed #bed8c8;
+      border-radius: 14px;
+      min-height: 88px;
+      background: #f6faf7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      color: #6b7d72;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .project-documents-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .project-documents-list:empty {
+      display: none;
+    }
+
+    @media (max-width: 767px) {
+      .project-documents {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin: 24px 0 36px;
+      }
+
+      .project-documents-card {
+        min-height: 190px;
+        padding: 22px 18px;
+      }
+
+      .project-documents-heading {
+        font-size: 20px;
+      }
+    }
+  </style>
 </head>
+
 <body>
   <div class="container">
-      
+
     <!-- Banner -->
     <section class="banner">
       <div class="left-banner">
         <div>
-           <img src="images/logo-topline.svg" alt="شعار الجمعية" class="banner-brand">
+          <img
+            src="images/logo-topline.svg"
+            alt="شعار الجمعية"
+            class="banner-brand"
+          >
+        </div>
+
+        <div class="banner-location">
+          <a href="https://maps.app.goo.gl/5XBR3s8giYMM2t1Y7">
+            <img
+              class="qrloc btn-cta"
+              src="./images/QRCODE.png"
+              alt="رمز موقع المسجد"
+            >
+          </a>
+
+          <a
+            class="btn-cta"
+            href="https://maps.app.goo.gl/5XBR3s8giYMM2t1Y7"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            موقع مسجد
+          </a>
+        </div>
       </div>
-       <div class="banner-location">
-              <a href="https://maps.app.goo.gl/5XBR3s8giYMM2t1Y7"><img class="qrloc btn-cta" src="./images/QRCODE.png" alt=""></a> 
-                <a class="btn-cta" href="https://maps.app.goo.gl/5XBR3s8giYMM2t1Y7" target="_blank" rel="noopener noreferrer">موقع مسجد</a>
-              </div>
-              </div>
+
       <div class="banner-info">
         <div class="site-header">
-         
           <div class="site-meta">
-           
-              <h1 class="banner-title">مشروع بناء جامع أمهات المؤمنين</h1>
-              
+            <h1 class="banner-title">
+              مشروع بناء جامع أمهات المؤمنين
+            </h1>
           </div>
         </div>
       </div>
+
+      <!-- الشركاء -->
       <div class="banner-logos" aria-label="الشركاء والداعمين">
 
         <div class="banner-logo-item">
           <span class="banner-logo-label">المالك</span>
-          <img src="images/Ministry_of_islamic_affairs_in_saudi_arabia_Logo.svg" alt="شعار الراعي 2" class="banner-logo">
+          <img
+            src="images/Ministry_of_islamic_affairs_in_saudi_arabia_Logo.svg"
+            alt="وزارة الشؤون الإسلامية"
+            class="banner-logo"
+          >
         </div>
-       
+
         <div class="banner-logo-item">
-          <span class="banner-logo-label"> إدارة المشروع</span>
-          <img src="images/logo-brand.svg" alt="شعار الراعي 2" class="banner-logo">
+          <span class="banner-logo-label">إدارة المشروع</span>
+          <img
+            src="images/logo-brand.svg"
+            alt="جمعية يعمر للعناية بالمساجد"
+            class="banner-logo"
+          >
         </div>
-       
+
         <div class="banner-logo-item">
           <span class="banner-logo-label">المكتب الاستشاري</span>
-          <img src="images/mdarat.png" alt="شعار الراعي 4" class="banner-logo">
+          <img
+            src="images/mdarat.png"
+            alt="مكتب مدارة للاستشارات"
+            class="banner-logo"
+          >
         </div>
+
         <div class="banner-logo-item">
           <span class="banner-logo-label">المقاول</span>
-          <img src="images/yamas.png" alt="شعار الراعي 5" class="banner-logo">
+          <img
+            src="images/yamas.png"
+            alt="شركة يماس العربية للمقاولات"
+            class="banner-logo"
+          >
         </div>
       </div>
+
+      <!-- بيانات المشروع -->
       <div class="banner-stats" aria-label="إحصاءات المشروع">
+
         <div class="banner-stat">
           <div class="banner-number">5,911.23</div>
           <div class="banner-label">إجمالي مساحة المشروع م2</div>
         </div>
-          
+
         <div class="banner-stat">
           <div class="banner-number">700</div>
           <div class="banner-label">إجمالي عدد المصلين</div>
         </div>
+
         <div class="banner-stat">
           <div class="banner-number">4</div>
           <div class="banner-label">عدد المحلات الوقفية</div>
         </div>
+
         <div class="banner-stat">
           <div class="banner-number">2026/11/15</div>
           <div class="banner-label">تاريخ بداية المشروع</div>
         </div>
+
         <div class="banner-stat">
           <div class="banner-number">2028/1/15</div>
-          <div class="banner-label">تاريخ النهاية التعاقدية المتوقعة</div>
+          <div class="banner-label">
+            تاريخ النهاية التعاقدية المتوقعة
+          </div>
         </div>
+
         <div class="banner-stat">
           <div class="banner-number">1%</div>
           <div class="banner-label">نسبة الإنجاز الحالية</div>
         </div>
+
         <div class="banner-stat">
           <div class="banner-number">14 شهرًا</div>
           <div class="banner-label">مدة المشروع</div>
@@ -87,74 +212,121 @@
       </div>
     </section>
 
-    <!-- Images -->
-    <section class="images images-carousel" aria-label="Project images">
+    <!-- صور المشروع -->
+    <section
+      class="images images-carousel"
+      aria-label="صور المشروع"
+    >
       <div class="carousel">
-        <button class="carousel-btn prev" type="button" aria-label="Previous">
+        <button
+          class="carousel-btn prev"
+          type="button"
+          aria-label="السابق"
+        >
           &rsaquo;
         </button>
+
         <div class="carousel-viewport">
           <div class="carousel-track">
-            <!-- Slides injected by script.js -->
+            <!-- تُضاف الصور بواسطة script.js -->
           </div>
         </div>
-        <button class="carousel-btn next" type="button" aria-label="Next">
+
+        <button
+          class="carousel-btn next"
+          type="button"
+          aria-label="التالي"
+        >
           &lsaquo;
         </button>
       </div>
-
     </section>
 
-    <!-- Video -->
-     <div class="media-section">
-    <div class="media-caption">البث المباشر</div>
-          </div>
-         
-    <div class="black-screen">
-      <iframe src="https://www.youtube.com/embed/Tb1sEUxNdqk"
-              
-              frameborder="0"
-              allow="autoplay; encrypted-media">
-      </iframe>
+    <!-- البث المباشر -->
+    <div class="media-section">
+      <div class="media-caption">البث المباشر</div>
     </div>
 
-    <!-- Progress Gauge -->
+    <div class="black-screen">
+      <iframe
+        src="https://www.youtube.com/embed/Tb1sEUxNdqk"
+        title="البث المباشر"
+        frameborder="0"
+        allow="autoplay; encrypted-media"
+      ></iframe>
+    </div>
+
+    <!-- نسبة الإنجاز والعداد -->
     <section class="progress-section">
+
       <div class="progress-block progress-gauge">
         <h3 class="progress-title">نسبة الإنجاز</h3>
+
         <div class="gauge">
           <svg viewBox="0 0 100 50">
-            <path d="M10,50 A40,40 0 0,1 90,50" class="gauge-bg" />
-            <path id="gauge-fill" d="M10,50 A40,40 0 0,1 90,50" class="gauge-fill" />
-            <text id="gauge-text" x="50" y="45" text-anchor="middle" class="gauge-text">1.00 %</text>
+            <path
+              d="M10,50 A40,40 0 0,1 90,50"
+              class="gauge-bg"
+            />
+
+            <path
+              id="gauge-fill"
+              d="M10,50 A40,40 0 0,1 90,50"
+              class="gauge-fill"
+            />
+
+            <text
+              id="gauge-text"
+              x="50"
+              y="45"
+              text-anchor="middle"
+              class="gauge-text"
+            >
+              1.00 %
+            </text>
           </svg>
         </div>
       </div>
 
       <div class="progress-block stage-info">
         <h3 class="progress-title">المرحلة الحالية</h3>
-        <p class="stage-name">لم تُحدّد المرحلة الحالية بعد</p>
+        <p class="stage-name">
+          لم تُحدّد المرحلة الحالية بعد
+        </p>
       </div>
 
       <div class="progress-block countdown-wrapper">
-        <h3 class="progress-title">عدد الأيام المتبقية لإنهاء الجامع</h3>
-        <div class="countdown-container" aria-live="polite" aria-atomic="true">
-          <div class="countdown-item" aria-label="عدد الأيام المتبقية">
+        <h3 class="progress-title">
+          عدد الأيام المتبقية لإنهاء الجامع
+        </h3>
+
+        <div
+          class="countdown-container"
+          aria-live="polite"
+          aria-atomic="true"
+        >
+          <div class="countdown-item" aria-label="الأيام">
             <div class="countdown-number" id="days">0</div>
             <div class="countdown-label">أيام</div>
           </div>
+
           <span class="countdown-separator">:</span>
-          <div class="countdown-item" aria-label="عدد الساعات المتبقية">
+
+          <div class="countdown-item" aria-label="الساعات">
             <div class="countdown-number" id="hours">0</div>
             <div class="countdown-label">ساعات</div>
           </div>
+
           <span class="countdown-separator">:</span>
-          <div class="countdown-item" aria-label="عدد الدقائق المتبقية">
+
+          <div class="countdown-item" aria-label="الدقائق">
             <div class="countdown-number" id="minutes">0</div>
             <div class="countdown-label">دقائق</div>
           </div>
+
           <span class="countdown-separator">:</span>
-          <div class="countdown-item" aria-label="عدد الثواني المتبقية">
+
+          <div class="countdown-item" aria-label="الثواني">
             <div class="countdown-number" id="seconds">0</div>
             <div class="countdown-label">ثواني</div>
           </div>
@@ -162,110 +334,165 @@
       </div>
     </section>
 
-    <!-- Timeline Strip 1 -->
-         <div>البنود الرئيسية</div>
+    <!-- البنود الرئيسية -->
+    <div>البنود الرئيسية</div>
+
     <div class="timeline-container">
       <div class="timeline-strip">
         <div class="timeline-pill">
-          <div class="timeline-item completed"><span>مراجعة المخططات</span></div>
-          <div class="timeline-item completed"><span>مراجعة التصاميم</span></div>
-          <div class="timeline-item completed"><span>طلب عروض السعر</span></div>
-          <div class="timeline-item completed"><span>ترسية المشروع</span></div>
-          <div class="timeline-item completed"><span>التعاقد معا المقاول</span></div>
-          <div class="timeline-item completed"><span>التعاقد مع المكتب الهندسي</span></div>
-          <div class="timeline-item completed"><span>إصدار التراخيص</span></div>
-          <div class="timeline-item current"><span>أعمال العظم</span></div>
 
-          <div class="timeline-item pending"><span>أعمال التشطيب</span></div>
-          <div class="timeline-item pending"><span>أعمال التأثيث</span></div>
+          <div class="timeline-item completed">
+            <span>مراجعة المخططات</span>
+          </div>
 
-          <div class="timeline-item pending"><span>أعمال الخدمات</span></div>
-          <div class="timeline-item pending"><span>الفحص والتسليم</span></div>
+          <div class="timeline-item completed">
+            <span>مراجعة التصاميم</span>
+          </div>
+
+          <div class="timeline-item completed">
+            <span>طلب عروض السعر</span>
+          </div>
+
+          <div class="timeline-item completed">
+            <span>ترسية المشروع</span>
+          </div>
+
+          <div class="timeline-item completed">
+            <span>التعاقد معا المقاول</span>
+          </div>
+
+          <div class="timeline-item completed">
+            <span>التعاقد مع المكتب الهندسي</span>
+          </div>
+
+          <div class="timeline-item completed">
+            <span>إصدار التراخيص</span>
+          </div>
+
+          <div class="timeline-item current">
+            <span>أعمال العظم</span>
+          </div>
+
+          <div class="timeline-item pending">
+            <span>أعمال التشطيب</span>
+          </div>
+
+          <div class="timeline-item pending">
+            <span>أعمال التأثيث</span>
+          </div>
+
+          <div class="timeline-item pending">
+            <span>أعمال الخدمات</span>
+          </div>
+
+          <div class="timeline-item pending">
+            <span>الفحص والتسليم</span>
+          </div>
+
         </div>
       </div>
     </div>
-    
 
-    <!-- Timeline Strip 2 -->
-      <div>البنود الفرعية</div>
+    <!-- البنود الفرعية -->
+    <div>البنود الفرعية</div>
+
     <div class="timeline-container timeline-container-with-label">
       <div class="timeline-strip1">
         <div class="timeline-pill">
-                  <div class="timeline-item current"><span>أعمال اللياسة الداخلية</span></div>
-          <div class="timeline-item pending"><span>أعمال اللياسة الخارجية</span></div>
-          <div class="timeline-item pending"><span>أعمال الدهانات الداخلية</span></div>
-          <div class="timeline-item pending"><span>أعمال الدهانات الخارجية</span></div>
-          <div class="timeline-item pending"><span>أعمال العزل المائي والحراري</span></div>
-          
-          <div class="timeline-item pending"><span>أعمال الأرضيات</span></div>
-          <div class="timeline-item pending"><span>أعمال الحوائط</span></div>
-          <div class="timeline-item pending"><span>أعمال الأسقف</span></div>
-          <div class="timeline-item pending"><span>أعمال الأبواب</span></div>
-          <div class="timeline-item pending"><span>أعمال الألمنيوم</span></div>
+
+          <div class="timeline-item current">
+            <span>أعمال اللياسة الداخلية</span>
+          </div>
+
+          <div class="timeline-item pending">
+            <span>أعمال اللياسة الخارجية</span>
+          </div>
+
+          <div class="timeline-item pending">
+            <span>أعمال الدهانات الداخلية</span>
+          </div>
+
+          <div class="timeline-item pending">
+            <span>أعمال الدهانات الخارجية</span>
+          </div>
+
+          <div class="timeline-item pending">
+            <span>أعمال العزل المائي والحراري</span>
+          </div>
+
+          <div class="timeline-item pending">
+            <span>أعمال الأرضيات</span>
+          </div>
+
+          <div class="timeline-item pending">
+            <span>أعمال الحوائط</span>
+          </div>
+
+          <div class="timeline-item pending">
+            <span>أعمال الأسقف</span>
+          </div>
+
+          <div class="timeline-item pending">
+            <span>أعمال الأبواب</span>
+          </div>
+
+          <div class="timeline-item pending">
+            <span>أعمال الألمنيوم</span>
+          </div>
+
         </div>
-      </div>    
-      <!-- Progress Reports -->
-    <section class="reports-section" aria-label="تقارير التقدم">
-      <h2 class="reports-title">تقارير التقدم</h2>
-      <p class="reports-subtitle">تصدر الجمعية تقارير PDF حول التقدم الحاصل.</p>
-      <div class="reports-grid"> 
-         <a class="report-card" href="pdf/d10.pdf" target="_blank" rel="noopener">
-          <span class="report-date">شهر 10 سنة 2026</span>
-          <span class="report-action">عرض التقرير PDF</span>
-        </a>
-         <a class="report-card" href="pdf/d9.pdf" target="_blank" rel="noopener">
-          <span class="report-date">شهر 9 سنة 2026</span>
-          <span class="report-action">عرض التقرير PDF</span>
-        </a>
-         <a class="report-card" href="pdf/dc8.pdf" target="_blank" rel="noopener">
-          <span class="report-date">شهر 8 سنة 2026</span>
-          <span class="report-action">عرض التقرير PDF</span>
-        </a>
-        <a class="report-card" href="pdf/الاطبلء  اء تحديث شهر 7 - جمعية يعمر للعناية بالمساجد.pdf" target="_blank" rel="noopener">
-          <span class="report-date">شهر 7 سنة 2026</span>
-          <span class="report-action">عرض التقرير PDF</span>
-        </a>
-        <a class="report-card" href="pdf/مشروع مسجد الأطباء تحديث شهر 6 - جمعية يعمر للعناية بالمساجد.pdf" target="_blank" rel="noopener">
-          <span class="report-date">شهر 6 سنة 2026</span>
-          <span class="report-action">عرض التقرير PDF</span>
-        </a>
-          <a class="report-card" href="pdf/مشروع جامع الضاحية تحديث شهر 5 - جمعية يعمر للعناية بالمساجد.pdf" target="_blank" rel="noopener">
-          <span class="report-date">شهر 5 سنة 2026</span>
-          <span class="report-action">عرض التقرير PDF</span>
-        </a>
-         <a class="report-card" href="pdf/doc202604.pdf" target="_blank" rel="noopener">
-          <span class="report-date">شهر 4 سنة 2026</span>
-          <span class="report-action">عرض التقرير PDF</span>
-        </a>
-        <a class="report-card" href="pdf/202303.pdf" target="_blank" rel="noopener">
-          <span class="report-date">شهر 3 سنة 2026</span>
-          <span class="report-action">عرض التقرير PDF</span>
-        </a>
-         <a class="report-card" href="pdf/022026.pdf" target="_blank" rel="noopener">
-          <span class="report-date">شهر 2 سنة 2026</span>
-          <span class="report-action">عرض التقرير PDF</span>
-        </a>
-        <a class="report-card" href="pdf/012026.pdf" target="_blank" rel="noopener">
-          <span class="report-date">شهر 1 سنة 2026</span>
-          <span class="report-action">عرض التقرير PDF</span>
-        </a>
-        <a class="report-card" href="pdf/122025.pdf" target="_blank" rel="noopener">
-          <span class="report-date">شهر 12 سنة 2025</span>
-          <span class="report-action">عرض التقرير PDF</span>
-        </a>
-        <a class="report-card" href="pdf/112025.pdf" target="_blank" rel="noopener">
-          <span class="report-date">شهر 11 سنة 2025</span>
-          <span class="report-action">عرض التقرير PDF</span>
-        </a>
-        <a class="report-card" href="pdf/102025.pdf" target="_blank" rel="noopener">
-          <span class="report-date">شهر 10 سنة 2025</span>
-          <span class="report-action">عرض التقرير PDF</span>
-        </a>
-         
       </div>
+    </div>
+
+    <!-- التقارير والملفات ذات العلاقة -->
+    <section
+      class="project-documents"
+      aria-label="تقارير المشروع والملفات ذات العلاقة"
+    >
+
+      <!-- المربع الأول: تقارير التقدم -->
+      <div class="project-documents-card">
+        <h2 class="project-documents-heading">
+          تقارير التقدم
+        </h2>
+
+        <p class="project-documents-description">
+          التقارير الدورية التي تصدرها الجمعية
+          لمتابعة تقدم أعمال المشروع.
+        </p>
+
+        <div class="project-documents-list" id="progress-reports">
+          <!-- توضع روابط التقارير الجديدة هنا لاحقًا -->
+        </div>
+
+        <div class="project-documents-empty">
+          لا توجد تقارير متاحة حاليًا
+        </div>
+      </div>
+
+      <!-- المربع الثاني: ملفات ذات علاقة -->
+      <div class="project-documents-card">
+        <h2 class="project-documents-heading">
+          ملفات ذات علاقة
+        </h2>
+
+        <p class="project-documents-description">
+          المستندات والملفات المرتبطة
+          بمشروع بناء جامع أمهات المؤمنين.
+        </p>
+
+        <div class="project-documents-list" id="related-files">
+          <!-- توضع روابط الملفات الجديدة هنا لاحقًا -->
+        </div>
+
+        <div class="project-documents-empty">
+          لا توجد ملفات مضافة حاليًا
+        </div>
+      </div>
+
     </section>
-</div>
-  
+
+  </div>
 
   <script src="script.js"></script>
 </body>
