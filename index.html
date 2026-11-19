@@ -381,7 +381,7 @@
 
     <div class="black-screen">
       <!-- بطاقة "البث سيبدأ قريبًا": لما يبدأ البث احذف هذه البطاقة وأرجع الـ iframe اللي تحتها -->
-      <div class="live-soon" role="img" aria-label="البث المباشر يبدأ يوم الاثنين 23 نوفمبر 2026 الساعة 12:30 ظهرًا">
+      <div class="live-soon" role="img" aria-label="البث المباشر يبدأ يوم الثلاثاء 24 نوفمبر 2026 الساعة 12:30 ظهرًا">
         <img src="images/logo-brand.svg" alt="" class="live-soon-logo" />
         <span class="live-soon-badge"><span class="live-soon-dot"></span> قريبًا</span>
         <h2 class="live-soon-title">البث المباشر لموقع المشروع</h2>
@@ -389,12 +389,12 @@
         <div class="live-soon-date">
           <div class="live-soon-box">
             <span class="live-soon-label">اليوم</span>
-            <span class="live-soon-value">الاثنين</span>
+            <span class="live-soon-value">الثلاثاء</span>
           </div>
           <div class="live-soon-box">
             <span class="live-soon-label">التاريخ</span>
-            <span class="live-soon-value">23 نوفمبر 2026</span>
-            <span class="live-soon-hijri">13 جمادى الآخرة 1448هـ</span>
+            <span class="live-soon-value">24 نوفمبر 2026</span>
+            <span class="live-soon-hijri">14 جمادى الآخرة 1448هـ</span>
           </div>
           <div class="live-soon-box">
             <span class="live-soon-label">الوقت</span>
@@ -683,7 +683,8 @@
         const file = files.find(item =>
           item.type === "file" &&
           item.name.toLowerCase().endsWith(".pdf") &&
-          item.name.includes(doc.keyword)
+          // normalize: بعض أسماء الملفات مكتوب فيها "أ" بطريقة مختلفة، فنوحّدها قبل البحث
+          item.name.normalize("NFC").includes(doc.keyword.normalize("NFC"))
         );
 
         if (!file) return;
