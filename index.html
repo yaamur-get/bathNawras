@@ -468,9 +468,104 @@
           <!-- توضع روابط الملفات الجديدة هنا لاحقًا -->
         </div>
 
-        <div class="project-documents-empty">
-          لا توجد ملفات مضافة حاليًا
-        </div>
+        
+<div class="reports-grid" id="related-documents">
+  <p>جاري تحميل الملفات...</p>
+</div>
+
+<script>
+(function () {
+  const container = document.getElementById("related-documents");
+
+  // ملفات ذات علاقة، بالترتيب المطلوب
+  const documents = [
+    {
+      title: "قرار تخصيص أرض النورس بالدمام",
+      keyword: "قرار تخصيص أرض"
+    },
+    {
+      title: "رخصة البناء لجامع النورس بالدمام",
+      keyword: "رخصة البناء"
+    },
+    {
+      title: "خطاب موافقة الشؤون الإسلامية على المخطط",
+      keyword: "خطاب موافقة"
+    },
+    {
+      title: "خطاب المتبرع بخصوص الأوقاف",
+      keyword: "خطاب المتبرع"
+    },
+    {
+      title: "المستكشف الجغرافي لأرض الجامع",
+      keyword: "المستكشف الجغرافي"
+    },
+    {
+      title: "القرار المساحي لأرض جامع النورس",
+      keyword: "القرار المساحي"
+    },
+    {
+      title: "صك أرض جامع النورس بالدمام",
+      keyword: "صك أرض"
+    },
+    {
+      title: "المخطط المعتمد من وزارة الشؤون الإسلامية",
+      keyword: "المخطط المعتمد"
+    }
+  ];
+
+  // قراءة الأسماء الأصلية للملفات من GitHub
+  const apiUrl =
+    "https://api.github.com/repos/yaamur-get/bathNawras/contents/pdf";
+
+  fetch(apiUrl)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("Could not load PDFs");
+      }
+      return response.json();
+    })
+    .then(files => {
+      container.innerHTML = "";
+
+      documents.forEach(doc => {
+        const file = files.find(item =>
+          item.type === "file" &&
+          item.name.toLowerCase().endsWith(".pdf") &&
+          item.name.includes(doc.keyword)
+        );
+
+        if (!file) return;
+
+        const link = document.createElement("a");
+        link.className = "report-card";
+        link.href = file.download_url;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+
+        const name = document.createElement("span");
+        name.className = "report-date";
+        name.textContent = doc.title;
+
+        const action = document.createElement("span");
+        action.className = "report-action";
+        action.textContent = "📄 فتح الملف PDF";
+
+        link.appendChild(name);
+        link.appendChild(action);
+        container.appendChild(link);
+      });
+
+      if (!container.children.length) {
+        container.textContent = "لم يتم العثور على الملفات.";
+      }
+    })
+    .catch(() => {
+      container.textContent =
+        "تعذر تحميل الملفات حاليًا، يرجى المحاولة لاحقًا.";
+    });
+})();
+</script>
+
       </div>
 
     </section>
