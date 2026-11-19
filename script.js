@@ -47,7 +47,7 @@ setProgress(1); // نسبة الإنجاز الحالية: 1%
 // --------------------
 // 3. Images carousel
 // --------------------
-(function initCarousel() {
+function initCarousel(imageSources) {
   const section = document.querySelector('.images-carousel');
   if (!section) return;
 
@@ -59,21 +59,6 @@ setProgress(1); // نسبة الإنجاز الحالية: 1%
   const dotsContainer = section.querySelector('.carousel-dots');
 
   if (!track || !viewport) return;
-
-  // Build slides from images/dihahphoto.
-  const imageSources = [
-    "images/dihahphoto/%D9%84%D9%82%D8%B7%D8%A9%20%D8%B4%D8%A7%D8%B4%D8%A9%202026-01-12%20105405.png",
-    "images/dihahphoto/%D9%84%D9%82%D8%B7%D8%A9%20%D8%B4%D8%A7%D8%B4%D8%A9%202026-01-12%20105422.png",
-    "images/dihahphoto/%D9%84%D9%82%D8%B7%D8%A9%20%D8%B4%D8%A7%D8%B4%D8%A9%202026-01-12%20105434.png",
-    "images/dihahphoto/%D9%84%D9%82%D8%B7%D8%A9%20%D8%B4%D8%A7%D8%B4%D8%A9%202026-01-12%20105451.png",
-    "images/dihahphoto/%D9%84%D9%82%D8%B7%D8%A9%20%D8%B4%D8%A7%D8%B4%D8%A9%202026-01-12%20105508.png",
-    "images/dihahphoto/%D9%84%D9%82%D8%B7%D8%A9%20%D8%B4%D8%A7%D8%B4%D8%A9%202026-01-12%20105521.png",
-    "images/dihahphoto/%D9%84%D9%82%D8%B7%D8%A9%20%D8%B4%D8%A7%D8%B4%D8%A9%202026-01-12%20105535.png",
-    "images/dihahphoto/%D9%84%D9%82%D8%B7%D8%A9%20%D8%B4%D8%A7%D8%B4%D8%A9%202026-01-12%20105618.png",
-    "images/dihahphoto/%D9%84%D9%82%D8%B7%D8%A9%20%D8%B4%D8%A7%D8%B4%D8%A9%202026-01-12%20105632.png",
-    "images/dihahphoto/%D9%84%D9%82%D8%B7%D8%A9%20%D8%B4%D8%A7%D8%B4%D8%A9%202026-01-12%20105647.png",
-    "images/dihahphoto/%D9%84%D9%82%D8%B7%D8%A9%20%D8%B4%D8%A7%D8%B4%D8%A9%202026-01-12%20105700.png"
-  ];
 
   if (imageSources.length) {
     track.innerHTML = '';
@@ -270,6 +255,31 @@ setProgress(1); // نسبة الإنجاز الحالية: 1%
   buildDots();
   rebuildClones(0);
   startAuto();
+}
+
+// صور المشروع: تُقرأ تلقائيًا من المجلد الرئيسي في GitHub (أي صورة jpg/png ترفعها هناك تظهر هنا)
+// إذا تعذر الاتصال بـ GitHub تُستخدم القائمة الاحتياطية تحت
+const GALLERY_API = "https://api.github.com/repos/yaamur-get/bathNawras/contents/";
+const GALLERY_FALLBACK = ["1in.jpg", "2in.jpg", "6in.jpg", "7in.jpg", "8in.jpg", "10.jpg", "12.jpg", "13.jpg"];
+
+(function loadGallery() {
+  const isImage = (name) => /\.(jpe?g|png|webp)$/i.test(name);
+  // ترتيب طبيعي للأرقام: 1in, 2, 2in, 3 ... 10, 12
+  const byNumber = (x, y) => x.localeCompare(y, "en", { numeric: true });
+
+  fetch(GALLERY_API)
+    .then((res) => {
+      if (!res.ok) throw new Error("gallery");
+      return res.json();
+    })
+    .then((files) => {
+      const names = files
+        .filter((f) => f.type === "file" && isImage(f.name))
+        .map((f) => f.name)
+        .sort(byNumber);
+      initCarousel((names.length ? names : GALLERY_FALLBACK).map(encodeURI));
+    })
+    .catch(() => initCarousel(GALLERY_FALLBACK.map(encodeURI)));
 })();
 
 // --------------------
