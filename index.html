@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -81,6 +80,133 @@
 
       .project-documents-heading {
         font-size: 20px;
+      }
+    }
+
+    /* بطاقة "البث سيبدأ قريبًا" مكان البث */
+    .live-soon {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 24px;
+      text-align: center;
+      color: #fff;
+      font-family: "Cairo", sans-serif;
+      background:
+        radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.12) 1px, transparent 0) 0 0 / 18px 18px,
+        linear-gradient(135deg, #08704c 0%, #0a5c40 50%, #003824 100%);
+    }
+
+    .live-soon-logo {
+      height: 56px;
+      filter: brightness(0) invert(1);
+      opacity: 0.95;
+    }
+
+    .live-soon-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 999px;
+      padding: 4px 16px;
+      font-weight: 700;
+      font-size: 15px;
+    }
+
+    .live-soon-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #e6ca8d;
+      animation: liveSoonPulse 1.6s ease-in-out infinite;
+    }
+
+    .live-soon-title {
+      margin: 4px 0 0;
+      font-size: clamp(22px, 3.2vw, 40px);
+      font-weight: 700;
+    }
+
+    .live-soon-sub {
+      margin: 0;
+      color: #e6ca8d;
+      font-size: clamp(15px, 1.6vw, 20px);
+      font-weight: 700;
+    }
+
+    .live-soon-date {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .live-soon-box {
+      min-width: 130px;
+      background: #fff;
+      color: #003824;
+      border-radius: 14px;
+      padding: 10px 18px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+    }
+
+    .live-soon-label {
+      font-size: 12px;
+      color: #6b7d72;
+    }
+
+    .live-soon-value {
+      font-size: clamp(17px, 1.8vw, 22px);
+      font-weight: 700;
+      color: #08704c;
+    }
+
+    .live-soon-hijri {
+      font-size: 12px;
+      color: #6b7d72;
+    }
+
+    .live-soon-note {
+      margin: 6px 0 0;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    @keyframes liveSoonPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(230, 202, 141, 0.7); }
+      50% { box-shadow: 0 0 0 8px rgba(230, 202, 141, 0); }
+    }
+
+    @media (max-width: 767px) {
+      .black-screen:has(.live-soon) {
+        aspect-ratio: auto;
+      }
+
+      .live-soon {
+        aspect-ratio: auto;
+        padding: 22px 14px;
+      }
+
+      .live-soon-logo {
+        height: 40px;
+      }
+
+      .live-soon-box {
+        min-width: 0;
+        flex: 1 1 90px;
+        padding: 8px 10px;
       }
     }
   </style>
@@ -254,12 +380,38 @@
     </div>
 
     <div class="black-screen">
+      <!-- بطاقة "البث سيبدأ قريبًا": لما يبدأ البث احذف هذه البطاقة وأرجع الـ iframe اللي تحتها -->
+      <div class="live-soon" role="img" aria-label="البث المباشر يبدأ يوم الاثنين 23 نوفمبر 2026 الساعة 12:30 ظهرًا">
+        <img src="images/logo-brand.svg" alt="" class="live-soon-logo" />
+        <span class="live-soon-badge"><span class="live-soon-dot"></span> قريبًا</span>
+        <h2 class="live-soon-title">البث المباشر لموقع المشروع</h2>
+        <p class="live-soon-sub">يبدأ بإذن الله</p>
+        <div class="live-soon-date">
+          <div class="live-soon-box">
+            <span class="live-soon-label">اليوم</span>
+            <span class="live-soon-value">الاثنين</span>
+          </div>
+          <div class="live-soon-box">
+            <span class="live-soon-label">التاريخ</span>
+            <span class="live-soon-value">23 نوفمبر 2026</span>
+            <span class="live-soon-hijri">13 جمادى الآخرة 1448هـ</span>
+          </div>
+          <div class="live-soon-box">
+            <span class="live-soon-label">الوقت</span>
+            <span class="live-soon-value">12:30 ظهرًا</span>
+          </div>
+        </div>
+        <p class="live-soon-note">تابعوا أعمال بناء جامع أمهات المؤمنين مباشرة من هنا</p>
+      </div>
+
+      <!--
       <iframe
         src="https://www.youtube.com/embed/Tb1sEUxNdqk"
         title="البث المباشر"
         frameborder="0"
         allow="autoplay; encrypted-media"
       ></iframe>
+      -->
     </div>
 
     <!-- نسبة الإنجاز والعداد -->
@@ -492,8 +644,8 @@
       keyword: "خطاب موافقة"
     },
     {
-      title: "خطاب المتبرع بخصوص الأوقاف",
-      keyword: "خطاب المتبرع"
+      title: "خطاب الوزارة بالموافقة على تسمية الجامع (جامع أمهات المؤمنين)",
+      keyword: "474734092"
     },
     {
       title: "المستكشف الجغرافي لأرض الجامع",
